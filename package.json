@@ -1,0 +1,12 @@
+{
+  "name": "Weather WebApp",
+  "version": "1.0.0",
+  "description": "Massless Technologies",
+  "author": "Ricky Dam",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
