@@ -9,5 +9,6 @@ app.get("/", function(req, res) {
 });
 
 // Run app on port 3000
-app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port);
 console.log('Weather WebApp for Massless Technologies running on port 3000.');
