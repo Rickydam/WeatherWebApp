@@ -1,7 +1,7 @@
 {
-  "name": "Weather WebApp",
+  "name": "weather",
   "version": "1.0.0",
-  "description": "Massless Technologies",
+  "description": "Weather WebApp.",
   "author": "Ricky Dam",
   "scripts": {
     "start": "node server.js"
