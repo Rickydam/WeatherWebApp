@@ -1,4 +1,4 @@
 # http://rickydam.com/WeatherWebApp
 A small project to learn how to use weather API.
 
-![screenshot](weather.png)
+<img src="weather.png" style="border:2px solid black">
