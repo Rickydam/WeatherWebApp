@@ -1,20 +1,18 @@
 <html>
   <header>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title> Weather WebApp </title>
     <link rel="shortcut icon" href="icon.png">
-    <link href="font-awesome.min.css" rel="stylesheet" type="text/css" >
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <font face="Source Sans Pro" size="5">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="custom.css">
   </header>
   <body>
     <div class="container-fluid">
       <br>
       <div class="col-xs-3">
-        <input class="form-control" placeholder="Enter your API key" id="theInput"/>
-        <input type="button" class="btn btn-primary" value="Get Your Location Weather!" onclick="getCoords()"/><br><br>
-      </div><br><br><br>
-      <span> URL: </span><b><span id="url"></span></b><br><br>
+        <button type="button" onclick="getCoords()" id="getLocation"> Get Your Location Weather! </button><br><br>
+      </div>
 
       <span> Longitude: </span><b><span id="longitude"></span></b><br>
       &nbsp;&nbsp;&nbsp; <span> Latitude: </span><b><span id="latitude"></span></b><br><br>
@@ -29,18 +27,11 @@
 
 <script>
   var getCoords = function() {
-    theKey = document.getElementById('theInput').value;
-    if(theKey.length < 20) {
-      alert("This is probably not an API key, try again.");
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getLocation, displayError);
     }
     else {
-      url = "http://api.openweathermap.org/data/2.5/weather?";
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getLocation, displayError);
-      }
-      else {
-        alert("Error.");
-      }
+      alert("Error.");
     }
   };
 
@@ -54,13 +45,13 @@
     document.getElementById("longitude").innerHTML = position.coords.longitude;
     document.getElementById("latitude").innerHTML = position.coords.latitude;
 
-    url = url + "lat=" + latitude + "&";
-    url = url + "lon=" + longitude;
-    url = url + "&appid=";
-    url = url + theKey;
-    url = url + "&units=metric";
+    url += "lat=" + latitude + "&";
+    url += "lon=" + longitude;
+    url += "&appid=";
+    url += "a97d5fd118eb84d222bec1f6cc1ec489";
+    url += "&units=metric";
 
-    document.getElementById("url").innerHTML = url;
+
 
     $.getJSON(url, function(data) {
         jsonData = data;
@@ -71,6 +62,6 @@
   }
 
   var displayError = function (error) {
-    alert("An error has occurred." + error);
+    alert("An error has occurred: " + error);
   }
 </script>

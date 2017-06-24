@@ -1,2 +1,4 @@
-# WeatherWebApp
-A small project for my application to Massless Technologies.
+# http://rickydam.com/WeatherWebApp
+A small project to learn how to use weather API.
+
+![screenshot](weather.png)
